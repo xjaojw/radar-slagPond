@@ -1,0 +1,16 @@
+# ninja log v6
+219	2625	7872083846751838	CMakeFiles/UDP_connect.dir/UdpWidget.cpp.obj	16df9ec1f99d8375
+656	3081	7871498394896933	CMakeFiles/UDP_connect.dir/UDP_connect_autogen/mocs_compilation.cpp.obj	1a3711fe32f49ba9
+10	807	7871382260097500	build.ninja	13a3bee2f6fc8ea1
+63	292	7872085324150244	UDP_connect_autogen/timestamp	711eec01abcdee22
+63	292	7872085324150244	UDP_connect_autogen/mocs_compilation.cpp	711eec01abcdee22
+63	292	7872085324150244	D:/Qt_project/UDP_connect/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/UDP_connect_autogen/timestamp	711eec01abcdee22
+292	2416	7872085326432398	CMakeFiles/UDP_connect.dir/main.cpp.obj	8fef12cf5be430c9
+63	292	7872085324150244	D:/Qt_project/UDP_connect/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/UDP_connect_autogen/mocs_compilation.cpp	711eec01abcdee22
+2417	2728	7872085347681496	UDP_connect.exe	9811057a342d233
+62	242	7872088337829205	UDP_connect_autogen/timestamp	711eec01abcdee22
+62	242	7872088337829205	UDP_connect_autogen/mocs_compilation.cpp	711eec01abcdee22
+62	242	7872088337829205	D:/Qt_project/UDP_connect/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/UDP_connect_autogen/timestamp	711eec01abcdee22
+62	242	7872088337829205	D:/Qt_project/UDP_connect/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/UDP_connect_autogen/mocs_compilation.cpp	711eec01abcdee22
+242	2397	7872088339639181	CMakeFiles/UDP_connect.dir/main.cpp.obj	8fef12cf5be430c9
+2397	2753	7872088361191337	UDP_connect.exe	9811057a342d233

@@ -1,0 +1,14 @@
+# ninja log v6
+65	1971	7872075122778652	SlagPond_3D_3_autogen/mocs_compilation.cpp	f8468b0b20b93fb2
+39	1092	7871427979422614	build.ninja	ff00eee084de45d6
+65	1971	7872075122778652	SlagPond_3D_3_autogen/timestamp	f8468b0b20b93fb2
+65	1971	7872075122778652	D:/Qt_project/SlagPond_3D_3/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/SlagPond_3D_3_autogen/timestamp	f8468b0b20b93fb2
+65	1971	7872075122778652	D:/Qt_project/SlagPond_3D_3/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/SlagPond_3D_3_autogen/mocs_compilation.cpp	f8468b0b20b93fb2
+1971	6244	7872075123965109	CMakeFiles/SlagPond_3D_3.dir/SlagPond_3D_3_autogen/mocs_compilation.cpp.obj	90d004e3cf49632c
+1978	6253	7872075124025110	CMakeFiles/SlagPond_3D_3.dir/main.cpp.obj	fc16298b79080471
+1983	7285	7872075124075118	CMakeFiles/SlagPond_3D_3.dir/SlagPondWidget.cpp.obj	794ec1d7eb440011
+1989	7260	7872075124135121	CMakeFiles/SlagPond_3D_3.dir/SlagPondViewWidget.cpp.obj	44c7d17a3591ff4b
+7285	8074	7872075177095511	SlagPond_3D_3.exe	1cd4b8ba3c2c8ca
+5	39	7871394658020651	CMakeFiles/clean.additional	cee7e56548ea36fa
+39	50	7871394658360639	clean	101d0f6048d5fe99
+1936	4547	7871394678501588	CMakeFiles/SlagPond_3D_3.dir/UdpWidget.cpp.obj	45554ba5cc8747cd

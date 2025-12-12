@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-747bb0c96e38e1e21a72.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "SlagPond_3D_3",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "SlagPond_3D_3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SlagPond_3D_3-Debug-bb7b145235fc28b30544.json",
+					"name" : "SlagPond_3D_3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "SlagPond_3D_3_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SlagPond_3D_3_autogen-Debug-7de748fa80709a5b3fcd.json",
+					"name" : "SlagPond_3D_3_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "SlagPond_3D_3_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SlagPond_3D_3_autogen_timestamp_deps-Debug-f27283723a1d549a9497.json",
+					"name" : "SlagPond_3D_3_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Qt_project/SlagPond_3D_3/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug",
+		"source" : "D:/Qt_project/SlagPond_3D_3"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
