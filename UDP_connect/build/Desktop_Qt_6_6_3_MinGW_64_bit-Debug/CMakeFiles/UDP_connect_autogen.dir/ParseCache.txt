@@ -4,6 +4,8 @@ D:/Qt_project/UDP_connect/UdpWidget.h
  mdp:D:/Qt_project/UDP_connect/UdpWidget.h
  mdp:D:/Qt_project/UDP_connect/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/UDP_connect_autogen/moc_predefs.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/QDateTime
+ mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/QTimer
+ mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/QVector
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/q20functional.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/q20memory.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/q20type_traits.h
@@ -17,6 +19,7 @@ D:/Qt_project/UDP_connect/UdpWidget.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qatomic.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qatomic_cxx11.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qbasicatomic.h
+ mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qbasictimer.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qbindingstorage.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qbytearray.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qbytearrayalgorithms.h
@@ -106,6 +109,7 @@ D:/Qt_project/UDP_connect/UdpWidget.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qtdeprecationmarkers.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qtenvironmentvariables.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qtextstream.h
+ mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qtimer.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qtmetamacros.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qtnoop.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qtpreprocessorsupport.h
@@ -119,6 +123,7 @@ D:/Qt_project/UDP_connect/UdpWidget.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qutf8stringview.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qvariant.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qvarlengtharray.h
+ mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qvector.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qversiontagging.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtCore/qxptype_traits.h
  mdp:D:/Qt/6.6.3/mingw_64/include/QtGui/qaction.h
@@ -359,5 +364,5 @@ D:/Qt_project/UDP_connect/UdpWidget.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
-D:/Qt_project/UDP_connect/UdpWidget.cpp
 D:/Qt_project/UDP_connect/main.cpp
+D:/Qt_project/UDP_connect/UdpWidget.cpp

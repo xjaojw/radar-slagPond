@@ -757,22 +757,62 @@ bool SlagPondWidget::loadCSV(const QString &filePath, char separator)
 
 void SlagPondWidget::onSocketReadyRead()
 {
+    // while (m_udpSocket->hasPendingDatagrams()) {
+    //     QByteArray datagram;
+    //     datagram.resize(m_udpSocket->pendingDatagramSize());
+    //     QHostAddress senderAddress;
+    //     quint16 senderPort;
+
+    //     qint64 bytesRead = m_udpSocket->readDatagram(datagram.data(), datagram.size(), &senderAddress, &senderPort);
+
+    //     if (bytesRead == -1) {
+    //         qDebug() << QString("读取数据报失败: %1").arg(m_udpSocket->errorString());
+    //         continue;
+    //     }
+
+    //     QString message = QString::fromUtf8(datagram);
+    //     qDebug() << QString("来自 %1:%2 -> %3").arg(senderAddress.toString()).arg(senderPort).arg(message);
+
+    // }
     while (m_udpSocket->hasPendingDatagrams()) {
         QByteArray datagram;
         datagram.resize(m_udpSocket->pendingDatagramSize());
-        QHostAddress senderAddress;
+        QHostAddress sender;
         quint16 senderPort;
 
-        qint64 bytesRead = m_udpSocket->readDatagram(datagram.data(), datagram.size(), &senderAddress, &senderPort);
+        m_udpSocket->readDatagram(datagram.data(), datagram.size(), &sender, &senderPort);
+        int byteNum;
+        memcpy(&byteNum, datagram.data(), sizeof(int));
+        int floatNum = byteNum / sizeof(int);
+        float coordinate[byteNum / sizeof(int)];
+        memcpy(coordinate, datagram.data() + sizeof(int), datagram.size() - sizeof(int));
 
-        if (bytesRead == -1) {
-            qDebug() << QString("读取数据报失败: %1").arg(m_udpSocket->errorString());
-            continue;
+        qDebug() << "Received from" << sender.toString() << ":" << floatNum / 3 << "个坐标";
+        static int addY = 0;
+        if(m_coordinateQueue.size() >= 240 * floatNum / 3)
+        {
+            for(int i = 0; i < floatNum; i+=3)
+            {
+                m_coordinateQueue.pop_front();
+            }
         }
+        for(int i = 0; i < floatNum; i+=3)
+        {
+            qDebug() << "(" << coordinate[i] << ", " << coordinate[i+1] << ", " << coordinate[i+2] << ")";
+            m_coordinateQueue.push_back(QVector3D((coordinate[i]-50)/4, coordinate[i+1]/4, (coordinate[i+2]-50)/4));
+        }
+        QVector<QVector3D> newCoordinateVector;
+        for(int i = 0; i < m_coordinateQueue.size(); ++i)
+        {
+            float changedY = m_coordinateQueue[i].y() + (addY/240.0f) * 100.0f / 4;
+            if (changedY >= 100.0f / 4) {
+                changedY = fmod(changedY, 100.0f / 4);
+            }
+            newCoordinateVector.append(QVector3D(m_coordinateQueue[i].x(), changedY, m_coordinateQueue[i].z()));
+        }
+        addY = (addY + 1) % 240;
 
-        QString message = QString::fromUtf8(datagram);
-        qDebug() << QString("来自 %1:%2 -> %3").arg(senderAddress.toString()).arg(senderPort).arg(message);
-
+        m_heightViewer->drawPoints3D(newCoordinateVector);
     }
 }
 

@@ -5,6 +5,8 @@
 #include <QUdpSocket>
 #include <QHostAddress>
 #include <QDateTime>
+#include <QVector>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -63,6 +65,7 @@ private:
     void initUI();
     void initConnections();
     void logMessage(const QString &type, const QString &msg);
+    void startSendCoordinate();
 
     // UI组件
     QLineEdit *m_targetHostEdit;
@@ -71,6 +74,7 @@ private:
     QPushButton *m_bindButton;
     QPushButton *m_sendButton;
     QPushButton *m_clearLogButton;
+    QPushButton *m_startScan;
     QTextEdit *m_sendTextEdit;
     QTextEdit *m_logTextEdit;
 
@@ -78,6 +82,8 @@ private:
     QUdpSocket *m_udpSocket;
     quint16 m_currentPort;
     bool m_isBound;
+    QVector<float> m_coordinate;
+    QTimer *m_timer;
 };
 
 #endif // UDPWIDGET_H

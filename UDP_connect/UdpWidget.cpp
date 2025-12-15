@@ -15,13 +15,13 @@ UdpWidget::UdpWidget(QWidget *parent)
     , m_isBound(false)
 {
     initUI();
-    initConnections();
+    initConnections();    
 }
 
 UdpWidget::~UdpWidget()
 {
     // 析构函数 - 清理资源
-    if (m_udpSocket && m_udpSocket->isOpen()) {
+    if (m_udpSocket) {
         m_udpSocket->close();
     }
 }
@@ -161,6 +161,7 @@ void UdpWidget::onClearLogButtonClicked()
 
 void UdpWidget::initUI()
 {
+    m_timer = new QTimer(this);
     // 创建组件
     QLabel *targetLabel = new QLabel("目标主机:");
     m_targetHostEdit = new QLineEdit("123456");
@@ -184,6 +185,8 @@ void UdpWidget::initUI()
 
     m_clearLogButton = new QPushButton("清空日志");
     m_clearLogButton->setToolTip("清空日志窗口");
+
+    m_startScan = new QPushButton("开始扫描");
 
     m_sendTextEdit = new QTextEdit;
     m_sendTextEdit->setPlaceholderText("在此输入要发送的消息...");
@@ -220,6 +223,7 @@ void UdpWidget::initUI()
     QHBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->addWidget(m_sendButton);
     buttonLayout->addWidget(m_clearLogButton);
+    buttonLayout->addWidget(m_startScan);
     buttonLayout->addStretch();
     mainLayout->addLayout(buttonLayout);
 
@@ -237,6 +241,9 @@ void UdpWidget::initConnections()
     connect(m_sendButton, &QPushButton::clicked, this, &UdpWidget::onSendButtonClicked);
     connect(m_bindButton, &QPushButton::clicked, this, &UdpWidget::onBindButtonClicked);
     connect(m_clearLogButton, &QPushButton::clicked, this, &UdpWidget::onClearLogButtonClicked);
+    connect(m_startScan, &QPushButton::clicked, [this]{
+        m_timer->start(20);
+    });
 
     // 连接socket信号
     connect(m_udpSocket, &QUdpSocket::readyRead, this, &UdpWidget::onSocketReadyRead);
@@ -245,6 +252,7 @@ void UdpWidget::initConnections()
         logMessage("错误", QString("Socket错误: %1").arg(m_udpSocket->errorString()));
         emit socketErrorOccurred(m_udpSocket->errorString());
     });
+    connect(m_timer, &QTimer::timeout, this, &UdpWidget::startSendCoordinate);
 }
 
 void UdpWidget::logMessage(const QString &type, const QString &msg)
@@ -252,4 +260,51 @@ void UdpWidget::logMessage(const QString &type, const QString &msg)
     QString timestamp = QDateTime::currentDateTime().toString("hh:mm:ss.zzz");
     QString logEntry = QString("[%1] %2: %3").arg(timestamp, type, msg);
     m_logTextEdit->append(logEntry);
+}
+
+void UdpWidget::startSendCoordinate()
+{
+    int arrayLength = 360;
+    float coordinate[arrayLength];
+    static float distance = 0.0f;
+    static float distanceStep = 50.0f / 120.0f;
+    static int index = 0;
+    float angle = 0.0f;
+    for(int i = 0; i < 360; i+=3)
+    {
+        coordinate[i] = distance * cos(angle) + 50.0f;
+        coordinate[i + 1] = (distanceStep > 0) ? distance : 100.0f - distance;
+        coordinate[i + 2] = distance * sin(angle) + 50.0f;
+        angle += 360.0f / 120.0f;
+    }
+    distance += distanceStep;
+    if(distance >= 50.0f)
+    {
+        distanceStep = -(50.0f / 120.0f);
+    }
+    if(distance <= 0.0f)
+    {
+        distanceStep = 50.0f / 120.0f;
+    }
+    QString targetHost = m_targetHostEdit->text();
+    quint16 targetPort = m_targetPortEdit->text().toUShort();
+    QByteArray byteArray;
+    int totalBytes  = arrayLength * sizeof(float);
+    byteArray.resize(totalBytes + sizeof(int));
+    memcpy(byteArray.data(), &totalBytes, sizeof(int));
+    memcpy(byteArray.data() + 4, coordinate, totalBytes);
+
+    qint64 bytesSent = m_udpSocket->writeDatagram(byteArray, QHostAddress(targetHost), targetPort);
+    if (bytesSent == -1) {
+        logMessage("错误", QString("发送失败: %1").arg(m_udpSocket->errorString()));
+        emit socketErrorOccurred(m_udpSocket->errorString());
+    } else {
+        QStringList list;
+        for (int i = 0; i < arrayLength; ++i) {
+            list.append(QString::number(coordinate[i], 'f', 4));
+        }
+        QString coorStr = "[" + list.join(", ") + "]";
+        logMessage("发送", QString("%4 到 %1:%2 (长度: %3字节)").arg(targetHost).arg(targetPort).arg(bytesSent).arg(coorStr));
+        qDebug() << "发送：" <<  QString("%4 到 %1:%2 (长度: %3字节)").arg(targetHost).arg(targetPort).arg(bytesSent).arg(coorStr);
+    }
 }

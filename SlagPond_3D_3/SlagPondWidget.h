@@ -17,6 +17,7 @@
 #include <QProgressBar>
 #include <QUdpSocket>
 #include <QHostAddress>
+#include <QQueue>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -71,5 +72,6 @@ private:
     QUdpSocket *m_udpSocket;
     quint16 m_currentPort;
     bool m_isBound;
+    QVector<QVector3D> m_coordinateQueue;
 };
 #endif // SLAGPONDWIDGET_H

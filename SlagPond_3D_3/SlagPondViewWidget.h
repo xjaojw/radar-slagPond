@@ -28,7 +28,7 @@ public:
     // 绘制三维点集函数
     void drawPoints3D(const QVector<QVector3D>& points,
                       const QVector4D& pointColor = QVector4D(1.0f, 0.0f, 0.0f, 1.0f),
-                      float pointSize = 5.0f);
+                      float pointSize = 2.0f);
 
     // 批量更新点集数据
     void setPointsData(const QVector<QVector3D>& points, float minHeight, float maxHeight);
